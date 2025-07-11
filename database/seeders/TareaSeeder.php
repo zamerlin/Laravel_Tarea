@@ -1,10 +1,9 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Tarea;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Tarea;
 
 class TareaSeeder extends Seeder
 {

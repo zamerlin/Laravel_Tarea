@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\controllers\TareaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +15,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Hola Bienvenido');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [TareaController::class, 'index']);
+Route::post('/tareas', [TareaController::class, 'store']);
+Route::get('/tareas/{id}/edit', [TareaController::class, 'edit']);
+Route::put('/tareas/{id}', [TareaController::class, 'update']);
+Route::delete('/tareas/{id}', [TareaController::class, 'destroy']);
 
-Route::get('/tareas', [App\Http\Controllers\TareaController::class, 'index'])->name('tareas.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
 
-Route::get('/tareas/create', [App\Http\Controllers\TareaController::class, 'create'])->name('tareas.create');
+Route::get('/tareas', [App\Http\Controllers\TareaController::class, 'index'])
+    ->name('tareas.index');
 
-Route::post('/tareas', [App\Http\Controllers\TareaController::class, 'store'])->name('tareas.store');
+Route::get('/tareas/create', [App\Http\Controllers\TareaController::class, 'create'])
+    ->name('tareas.create');
 
-Route::get('/tareas/{tarea}/edit', [App\Http\Controllers\TareaController::class, 'edit'])->name('tareas.edit');
+Route::post('/tareas', [App\Http\Controllers\TareaController::class, 'store'])
+    ->name('tareas.store');
 
-Route::put('/tareas/{tarea}', [App\Http\Controllers\TareaController::class, 'update'])->name('tareas.update');
+Route::get('/tareas/{tarea}/edit', [App\Http\Controllers\TareaController::class, 'edit'])
+    ->name('tareas.edit');
 
-Route::delete('/tareas/{tarea}', [App\Http\Controllers\TareaController::class, 'destroy'])->name('tareas.destroy');
+Route::put('/tareas/{tarea}', [App\Http\Controllers\TareaController::class, 'update'])
+    ->name('tareas.update');
+
+Route::delete('/tareas/{tarea}', [App\Http\Controllers\TareaController::class, 'destroy'])
+    ->name('tareas.destroy');
