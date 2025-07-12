@@ -7,7 +7,8 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ __('Bienvenido') }}</span>
                     <a href="{{ route('tareas.create') }}" class="btn btn-primary btn-sm">Crear Tarea</a>
-                </div>    
+                </div>
+                <div class="card-header">{{ __('Tablero') }}</div>    
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
